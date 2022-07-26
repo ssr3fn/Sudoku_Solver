@@ -9,8 +9,11 @@ print("Enter Grid: ")
 #For unfilled boxes put a '.' instead of the number
 for i in range(n):
     sudoku.input(i)
-a=sudoku.solve()
-if not a:
-    print("No solution exists.")
+if sudoku.checkGrid():
+    a=sudoku.solve()
+    if not a:
+        print("No solution exists.")
+    else:
+        sudoku.printGrid()
 else:
-    sudoku.printGrid()
+    print("No solution exists.")
