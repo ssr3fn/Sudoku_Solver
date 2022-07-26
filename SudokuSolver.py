@@ -7,7 +7,31 @@ class SudokuSolver:
         for i in range(self.dim):
             for j in range(self.dim):
                 print(self.grid[i][j],end = " ")
-            print("\n",end="") 
+            print("\n",end="")
+    def checkGrid(self):
+        a=[]
+        b=[]
+        c=int(sqrt(self.dim))
+        for i in range(self.dim):
+            for j in range(self.dim):
+                if self.grid[i][j]!='.' and self.grid[i][j] in a:
+                    return False
+                a.append(self.grid[i][j])
+                if self.grid[j][i]!='.' and self.grid[j][i] in b:
+                    return False
+                b.append(self.grid[j][i])
+            a.clear()
+            b.clear()
+        for i in range(self.dim):
+            for j in range((i//c)*c,(i//c)*c+c):
+                for k in range((i%c)*c,(i%c)*c+c):
+                    if self.grid[j][k]=='.':
+                        continue
+                    if self.grid[j][k] in a:
+                        return False
+                    a.append(self.grid[j][k])
+            a.clear()
+        return True 
     def check(self,c,i,j):
         a=int(sqrt(self.dim))
         for n in range(self.dim):
