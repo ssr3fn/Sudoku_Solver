@@ -9,6 +9,10 @@ class SudokuSolver:
                 print(self.grid[i][j],end = " ")
             print("\n",end="")
     def checkGrid(self):
+        for i in range(self.dim):
+            for j in range(self.dim):
+                if self.grid[i][j]==' ':
+                    return False
         a=[]
         b=[]
         c=int(sqrt(self.dim))
@@ -64,5 +68,5 @@ class SudokuSolver:
         return True
     def input(self,i):
         row=input()
-        for j in range(self.dim):
+        for j in range(len(row)):
             self.grid[i][j]=row[j]
